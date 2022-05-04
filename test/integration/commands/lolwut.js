@@ -11,20 +11,17 @@ runTwinSuite('lolwut', command => {
       redis.disconnect()
     })
 
-    test('should throw on invalid arguments', async () => {
-      expect.hasAssertions()
-
-      try {
-        await redis[command]('ver', 5)
-      } catch (err) {
-        expect(err.message).toMatch('ERR')
-      }
+    test('should just return Redis ver 7.0.0 on invalid arguments', async () => {
+      const result = await redis[command]('ver', 5)
+      expect(Buffer.isBuffer(result) ? result.toString() : result).toMatch(
+        'Redis ver. 7.0.0'
+      )
     })
 
-    test('should return Plaguemon by hikikomori. by default', async () => {
+    test('should return Redis ver 7.0.0 by default', async () => {
       const result = await redis[command]()
       expect(Buffer.isBuffer(result) ? result.toString() : result).toMatch(
-        'hikikomori'
+        'Redis ver. 7.0.0'
       )
     })
 

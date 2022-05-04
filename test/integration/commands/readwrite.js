@@ -3,12 +3,19 @@ import Redis from 'ioredis'
 // eslint-disable-next-line import/no-relative-parent-imports
 import { runTwinSuite } from '../../../test-utils'
 
-runTwinSuite('readwrite', (command, equals) => {
+runTwinSuite('readwrite', command => {
   describe(command, () => {
-    it('should return OK', async () => {
+    it('should return an error', async () => {
+      expect.hasAssertions()
       const redis = new Redis()
 
-      expect(equals(await redis[command](), 'OK')).toBe(true)
+      try {
+        await redis[command]()
+      } catch (e) {
+        expect(e.message).toEqual(
+          'ERR This instance has cluster support disabled'
+        )
+      }
 
       redis.disconnect()
     })

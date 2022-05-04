@@ -24,7 +24,7 @@ runTwinSuite('command', (command, equals) => {
       try {
         await redis[command]('foobar')
       } catch (err) {
-        expect(err.message).toMatch('Unknown subcommand')
+        expect(err.message).toMatch('unknown subcommand')
       }
     })
 
@@ -43,7 +43,7 @@ runTwinSuite('command', (command, equals) => {
         expect(equals(sinter[0], 'sinter')).toBe(true)
         expect(sinter[1]).toBe(-2)
         expect(equals(sinter[2][0], 'readonly')).toBe(true)
-        expect(equals(sinter[2][1], 'sort_for_script')).toBe(false)
+        expect(sinter[2][1]).toBeUndefined()
         expect(sinter[3]).toBe(1)
         expect(sinter[4]).toBe(-1)
         expect(sinter[5]).toBe(1)
@@ -96,10 +96,20 @@ runTwinSuite('command', (command, equals) => {
           '    Return details about all Redis commands.',
           'COUNT',
           '    Return the total number of commands in this Redis server.',
-          'GETKEYS <full-command>',
-          '    Return the keys from a full Redis command.',
+          'LIST',
+          '    Return a list of all commands in this Redis server.',
           'INFO [<command-name> ...]',
           '    Return details about multiple Redis commands.',
+          '    If no command names are given, documentation details for all',
+          '    commands are returned.',
+          'DOCS [<command-name> ...]',
+          '    Return documentation details about multiple Redis commands.',
+          '    If no command names are given, documentation details for all',
+          '    commands are returned.',
+          'GETKEYS <full-command>',
+          '    Return the keys from a full Redis command.',
+          'GETKEYSANDFLAGS <full-command>',
+          '    Return the keys and the access flags from a full Redis command.',
           'HELP',
           '    Prints this help.',
         ])
