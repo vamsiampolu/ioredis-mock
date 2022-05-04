@@ -1,4 +1,4 @@
-const redisVersion = '6.2.3'
+const redisVersion = '7.0.0'
 
 // schotter, plotter on paper, by Georg Nees
 function version5() {
@@ -36,9 +36,13 @@ Dedicated to the 8 bit game developers of past and present.
 Original 8 bit image from Plaguemon by hikikomori. Redis ver. ${redisVersion}`
 }
 
+function version7() {
+ return `Redis ver. ${redisVersion}` 
+}
+
 export function lolwut(VERSION = 'VERSION', version) {
   if (VERSION && VERSION.toUpperCase() !== 'VERSION') {
-    throw new Error('ERR value is not an integer or out of range')
+    return version7();
   }
 
   // eslint-disable-next-line eqeqeq
@@ -51,7 +55,7 @@ export function lolwut(VERSION = 'VERSION', version) {
     return version5()
   }
 
-  return version6()
+  return version7()
 }
 
 export function lolwutBuffer(...args) {

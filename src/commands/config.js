@@ -26,7 +26,7 @@ export function config(_subcommand, ...args) {
   }
 
   if (subcommand === 'SET' && args.length > 1) {
-    throw new Error(`ERR Unsupported CONFIG parameter: ${args[0]}`)
+    throw new Error(`ERR Unknown option or number of arguments for CONFIG SET - '${args[0]}'`)
   }
 
   if (subcommand === 'RESETSTAT' && args.length === 0) {

@@ -1,8 +1,7 @@
 export function readwrite() {
-  return 'OK'
+  throw new Error('ERR This instance has cluster support disabled')
 }
 
 export function readwriteBuffer() {
-  const val = readwrite.call(this)
-  return val ? Buffer.from(val) : val
+  throw new Error('ERR This instance has cluster support disabled')
 }

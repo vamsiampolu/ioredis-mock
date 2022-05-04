@@ -9,7 +9,7 @@ function encoding(key) {
   }
 
   if (val instanceof Map) {
-    return 'ziplist'
+    return 'listpack'
   }
 
   if (Array.isArray(val)) {
@@ -23,7 +23,7 @@ function encoding(key) {
     return 'embstr'
   }
 
-  return 'ziplist'
+  return 'listpack'
 }
 
 export function object(_subcommand, key, ...args) {
