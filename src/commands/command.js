@@ -21,18 +21,28 @@ export function command(_subcommand, ...args) {
   const subcommand = _subcommand.toUpperCase()
 
   if (subcommand === 'HELP' && args.length === 0) {
-    return [
-      'COMMAND <subcommand> [<arg> [value] [opt] ...]. Subcommands are:',
-      '(no subcommand)',
-      '    Return details about all Redis commands.',
-      'COUNT',
-      '    Return the total number of commands in this Redis server.',
-      'GETKEYS <full-command>',
-      '    Return the keys from a full Redis command.',
-      'INFO [<command-name> ...]',
-      '    Return details about multiple Redis commands.',
-      'HELP',
-      '    Prints this help.',
+    return [ 
+        'COMMAND <subcommand> [<arg> [value] [opt] ...]. Subcommands are:',
+        '(no subcommand)',
+        '    Return details about all Redis commands.',
+        'COUNT',
+        '    Return the total number of commands in this Redis server.',
+        'LIST',
+        '    Return a list of all commands in this Redis server.',
+        'INFO [<command-name> ...]',
+        '    Return details about multiple Redis commands.',
+        '    If no command names are given, documentation details for all',
+        '    commands are returned.',
+        'DOCS [<command-name> ...]',
+        '    Return documentation details about multiple Redis commands.',
+        '    If no command names are given, documentation details for all',
+        '    commands are returned.',
+        'GETKEYS <full-command>',
+        '    Return the keys from a full Redis command.',
+        'GETKEYSANDFLAGS <full-command>',
+        '    Return the keys and the access flags from a full Redis command.',
+        'HELP',
+        '    Prints this help.',
     ]
   }
 
