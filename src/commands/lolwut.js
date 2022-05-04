@@ -37,12 +37,12 @@ Original 8 bit image from Plaguemon by hikikomori. Redis ver. ${redisVersion}`
 }
 
 function version7() {
- return `Redis ver. ${redisVersion}` 
+  return `Redis ver. ${redisVersion}`
 }
 
 export function lolwut(VERSION = 'VERSION', version) {
   if (VERSION && VERSION.toUpperCase() !== 'VERSION') {
-    return version7();
+    return version7()
   }
 
   // eslint-disable-next-line eqeqeq
